@@ -21,3 +21,14 @@ function selecionaCor () {
   }
 }
 selecionaCor();
+
+function limpar () {
+  const botao = document.getElementById('clear-board');
+  botao.addEventListener('click', function () {
+    const boardEl = document.getElementsByClassName('pixel');
+    for (let index = 0; index < boardEl.length; index += 1) {
+      boardEl[index].style.backgroundColor = 'white';
+    }
+  });
+}
+limpar ();
