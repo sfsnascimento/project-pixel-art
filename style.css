@@ -9,18 +9,22 @@ table td {
 
 #preto {
   background-color: black;
+  color: black;
 }
 
 #vermelho {
   background-color:red;
+  color: red;
 }
 
 #azul {
   background-color: blue;
+  color: blue;
 }
 
 #verde {
   background-color: green;
+  color: green;
 }
 
 .pixel {
