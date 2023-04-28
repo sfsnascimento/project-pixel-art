@@ -1,43 +1,83 @@
-#color-palette {
-  border-spacing: 10px;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(43, 77, 122);
 }
 
-table td {
-  border: 1px solid black;
-  padding: 35px;
+h1 {
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+  text-align: center;
 }
 
-#preto {
-  background-color: black;
-  color: black;
+.color-palette-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
 }
 
-#vermelho {
-  background-color:red;
-  color: red;
+
+.color-palette {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
 }
 
-#azul {
-  background-color: blue;
-  color: blue;
+.color {
+  height: 60px;
+  width: 60px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-#verde {
-  background-color: green;
-  color: green;
+.selection-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }
 
-.pixel {
-  background-color: white;
-  width: 40px;
-  height: 40px;
+#clear-board, #generate-board {
+  width: 80px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#board-size {
+  width: 60px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.board-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.pixel-board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  width: 600px;
 }
 
 #pixel-board {
-  border-spacing: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
 }
 
-
-
-
-
+.pixel {
+  box-sizing: border-box;
+  background-color: white;
+  width: 75px;
+  height: 75px;
+  border: 2px solid rgb(2, 77, 31);
+  cursor: pointer;
+}
