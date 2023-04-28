@@ -1,27 +1,74 @@
-function adicionaClasseSelected() {
-  const elemento = document.querySelectorAll('.color');
-  for (let index = 0; index < elemento.length; index += 1) {
-    elemento[index].addEventListener('click', (event) => {
-      const removeClasse = document.querySelector('.selected');
-      removeClasse.classList.remove('selected');
-      event.target.classList.add('selected');
-    });
+function createBoard() {
+  const pixelBoard = document.querySelector('#pixel-board');
+  const quantidade = document.querySelector('#board-size').value || 64;
+
+  for (let i = 0; i < quantidade; i += 1) {
+    const pixel = document.createElement('div');
+    pixel.classList.add('pixel');
+    pixelBoard.appendChild(pixel);
   }
 }
-adicionaClasseSelected();
+createBoard();
+
+function paletaDeCores() {
+  const black = document.querySelector('[data-color="black"]');
+  const red = document.querySelector('[data-color="red"]');
+  const blue = document.querySelector('[data-color="blue"]');
+  const green = document.querySelector('[data-color="green"]');
+
+  black.style.backgroundColor = 'black';
+  red.style.backgroundColor = 'red';
+  blue.style.backgroundColor = 'blue';
+  green.style.backgroundColor = 'green';
+}
+paletaDeCores();
 
 function selecionaCor() {
-  const pixelElement = document.querySelectorAll('.pixel');
-  for (let index = 0; index < pixelElement.length; index += 1) {
-    pixelElement[index].addEventListener('click', (event) => {
+  const elementos = document.querySelectorAll('.pixel');
+  console.log(elementos);
+
+  elementos.forEach((elemento) => {
+    elemento.addEventListener('click', (event) => {
       const e = event;
-      const removeClasse = document.querySelector('.selected');
-      const colorEl = removeClasse.innerText;
-      e.target.style.backgroundColor = colorEl;
+      const selected = document.querySelector('.selected');
+      const cor = selected.dataset.color;
+      e.target.style.backgroundColor = cor;
     });
-  }
+  });
 }
 selecionaCor();
+
+const generateBoard = document.querySelector('#generate-board');
+
+generateBoard.addEventListener('click', () => {
+  const quantidade = document.querySelector('#board-size').value;
+
+  if (quantidade < 65) {
+    const board = document.querySelector('#pixel-board');
+
+    while (board.firstChild) {
+      board.removeChild(board.firstChild);
+    }
+
+    createBoard();
+    selecionaCor();
+  }
+});
+
+function adicionaClasseSelected() {
+  const elementos = document.querySelectorAll('.color');
+
+  elementos.forEach((elemento) => {
+    elemento.addEventListener('click', (event) => {
+      const removeClasse = document.querySelector('.selected');
+
+      if (removeClasse) removeClasse.classList.remove('selected');
+
+      event.target.classList.add('selected');
+    });
+  });
+}
+adicionaClasseSelected();
 
 function limpar() {
   const botao = document.getElementById('clear-board');
@@ -33,18 +80,3 @@ function limpar() {
   });
 }
 limpar();
-
-function tamanhoQuadroPixel() {
-  const botaoEl = document.getElementById('generate-board');
-  botaoEl.addEventListener('click', () => {
-    const inputEl = document.getElementById('board-size');
-    const pixelEl = document.getElementsByClassName('pixel');
-    for (let index = 0; index < pixelEl.length; index += 1) {
-      const inputValue = `${inputEl.value} + 'px'`;
-      pixelEl[index].style.width = inputValue;
-      pixelEl[index].style.height = inputValue;
-    }
-  });
-}
-
-tamanhoQuadroPixel();
